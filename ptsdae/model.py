@@ -380,6 +380,6 @@ def save_autoencoder(
             batch = batch.cuda(non_blocking=True)
         features.append(autoencoder.encoder(batch).detach().cpu())
     actual = torch.cat(actual).long()
-    torch.save(features, f'{dataset_name}_encoder_out.pt')
-    torch.save(actual, f'{dataset_name}_actual_out.pt')
+    torch.save(torch.cat(features,dim=0), f'{dataset_name}_encoder_out.pt')
+    # torch.save(actual, f'{dataset_name}_actual_out.pt')
 
