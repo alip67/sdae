@@ -101,7 +101,7 @@ def train(
             loss_value = float(loss.item())
             optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(autoencoder.parameters(), 5)
+            # torch.nn.utils.clip_grad_norm_(autoencoder.parameters(), 5)
             optimizer.step(closure=None)
             data_iterator.set_postfix(
                 epo=epoch, lss="%.6f" % loss_value, vls="%.6f" % validation_loss_value,
